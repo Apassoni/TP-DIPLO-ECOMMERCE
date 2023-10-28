@@ -178,11 +178,44 @@ main {
     gap: .25rem;
 }
 
+producto-detalles1 {
+    background-color: var(--clr-main);
+    color: var(--clr-white);
+    padding: .5rem;
+    border-radius: 1rem;
+    margin-top: -2rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+    width: 50%;
+}
+
+
+.contenedorProducto{
+
+    width: 80%;
+   
+   
+}
+
 .producto-titulo {
     font-size: 1rem;
 }
 
 .producto-agregar {
+    border: 0;
+    background-color: var(--clr-white);
+    color: var(--clr-main);
+    padding: .4rem;
+    text-transform: uppercase;
+    border-radius: 2rem;
+    cursor: pointer;
+    border: 2px solid var(--clr-white);
+    transition: background-color .2s, color .2s;
+}
+
+.producto-masinfo {
     border: 0;
     background-color: var(--clr-white);
     color: var(--clr-main);

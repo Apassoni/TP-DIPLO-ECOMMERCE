@@ -6,10 +6,9 @@ let productos = [];
 
 // Función para hacer la consulta a la API y obtener los datos
 function obtenerProductosDesdeAPI() {
-  const url =
-    "https://api.mercadolibre.com/sites/MLA/search?q=RopaAbrigo%20Ropa%20Invierno&limit=10&sort=relevance";
-  const url2 = "https://fakestoreapi.com/products";
-  fetch(url2)
+ 
+  const url = "https://fakestoreapi.com/products";
+  fetch(url)
     .then((response) => response.json())
     .then((data) => {
       // Filtrar y mapear los datos relevantes de la respuesta de la API
@@ -39,6 +38,7 @@ const contenedorProductos = document.querySelector("#contenedor-productos");
 const botonesCategorias = document.querySelectorAll(".boton-categoria");
 const tituloPrincipal = document.querySelector("#titulo-principal");
 let botonesAgregar = document.querySelectorAll(".producto-agregar");
+let botonesMasInfo = document.querySelectorAll(".producto-masinfo");
 const numerito = document.querySelector("#numerito");
 
 botonesCategorias.forEach((boton) =>
@@ -60,6 +60,7 @@ function cargarProductos(productosElegidos) {
                 <h3 class="producto-titulo">${producto.titulo}</h3>
                 <p class="producto-precio">$${producto.precio}</p>
                 <button class="producto-agregar" id="${producto.id}">Agregar</button>
+                <button class="producto-masinfo" id="MI${producto.id}">MasInfo</button>
             </div>
         `;
 
@@ -96,12 +97,15 @@ botonesCategorias.forEach((boton) => {
 
 function actualizarBotonesAgregar() {
   botonesAgregar = document.querySelectorAll(".producto-agregar");
+  botonesMasInfo = document.querySelectorAll(".producto-masinfo");
+
 
   botonesAgregar.forEach((boton) => {
     boton.addEventListener("click", agregarAlCarrito);
+  });
 
-
-
+  botonesMasInfo.forEach((boton) => {
+    boton.addEventListener("click", verMasInfo);
   });
 }
 
@@ -170,4 +174,20 @@ function actualizarNumerito() {
     0
   );
   numerito.innerText = nuevoNumerito;
+}
+
+
+function verMasInfo(e){
+
+  const idBoton = parseInt((e.currentTarget.id).replace(/\D/g,''));
+  console.log(idBoton);
+  window.location.href = "producto.html?id=" + idBoton;
+
+
+
+
+
+
+
+
 }
